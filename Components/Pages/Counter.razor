@@ -1,0 +1,12 @@
+﻿@page "/counter"
+@using BlazorHtmxDemo.Components.Partials
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status" id="current-count" hx-get="/api/counter">
+    <CurrentCount />
+</p>
+
+<button class="btn btn-primary" hx-post="/api/counter" hx-target="#current-count">Click me</button>

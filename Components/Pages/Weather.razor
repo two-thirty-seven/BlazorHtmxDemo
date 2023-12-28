@@ -1,0 +1,13 @@
+﻿@page "/weather"
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+<div hx-get="/api/weather" hx-trigger="load" id="weather-table">
+  <p><em>Loading...</em></p>
+</div>
+
+<button class="btn btn-primary" hx-get="/api/weather" hx-target="#weather-table" hx-trigger="click">Reload</button>

@@ -1,0 +1,22 @@
+@inject IHttpContextAccessor _httpContext
+
+Current count: @_currentCount
+
+@code {
+    private int _currentCount = 0;
+
+    protected override void OnInitialized()
+    {
+        int? sessionCount = _httpContext.HttpContext.Session.GetInt32("CurrentCount");
+        if (sessionCount.HasValue)
+        {
+            _currentCount = (int)sessionCount;
+        }
+        else 
+        {
+            _currentCount = 0;            
+        }
+
+        _httpContext.HttpContext.Session.SetInt32("CurrentCount", _currentCount);
+    }
+}
