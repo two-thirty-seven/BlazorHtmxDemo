@@ -1,4 +1,5 @@
 ﻿@page "/"
+@using BlazorHtmxDemo.Components.Partials
 
 <PageTitle>Home</PageTitle>
 
@@ -6,4 +7,5 @@
 
 Welcome to your new app.
 
-<button hx-get="/api/love-htmx" hx-target="#header">Click me</button>
+<button class="btn btn-primary" hx-get="/api/love-htmx" hx-target="#header">Click me</button>
+

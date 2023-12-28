@@ -1,0 +1,29 @@
+@if (PopupState == PopupMode.Closed)
+{
+    <div id="menu">
+        <button class="btn btn-primary" hx-get="/api/links/Open" hx-target="#menu" hx-swap="outerHTML">Open Menu</button>
+    </div>
+}
+@if (PopupState == PopupMode.Open)
+{
+    <div id="menu" hx-get="/api/links/Closed" hx-trigger="mouseleave">
+        <button class="btn btn-primary" hx-get="/api/links/Closed" hx-target="#menu" hx-swap="outerHTML">Close Menu</button>
+        <div class="popup-menu">
+            <a class="menu-link" href="/">Home</a>
+            <a class="menu-link" href="counter">Counter</a>
+            <a class="menu-link" href="weather">Weather</a>
+        </div>
+    </div>
+}
+
+@code 
+{
+    [Parameter]
+    public PopupMode PopupState { get; set; } = PopupMode.Closed;
+
+    public enum PopupMode
+    {
+        Open,
+        Closed
+    }
+}
