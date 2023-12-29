@@ -1,7 +1,4 @@
 using BlazorHtmxDemo.Components;
-using BlazorHtmxDemo.Components.Partials;
-using Microsoft.AspNetCore.Http.HttpResults;
-using static BlazorHtmxDemo.Components.Partials.PageLinks;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +30,7 @@ app.UseAntiforgery();
 app.UseSession();
 app.MapRazorComponents<App>();
 
-app.MapEndpoints()
-    .MapCounterEndpoints();
+app.MapEndpoints();
+app.MapCounterEndpoints();
 
 app.Run();
