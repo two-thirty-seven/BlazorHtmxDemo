@@ -1,4 +1,4 @@
-using BlazorHtmxDemo.Components.Partials;
+using BlazorHtmxDemo.Features.Counter;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 public static class CounterEndpoints

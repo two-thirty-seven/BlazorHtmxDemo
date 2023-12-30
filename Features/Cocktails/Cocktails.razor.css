@@ -1,0 +1,13 @@
+.htmx-indicator{
+    display:none;
+}
+.htmx-request .htmx-indicator{
+    display:inline;
+}
+.htmx-request.htmx-indicator{
+    display:inline;
+}
+
+.control-panel {
+    margin-bottom: 20px;
+}

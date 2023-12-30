@@ -1,0 +1,28 @@
+@inject CocktailsService _cocktailsService
+
+@if (_cocktails.Any())
+{
+    <p>Matches for <em>@Search</em></p>
+    <ul>
+        @foreach (var cocktail in _cocktails)
+        {
+            <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
+        }
+    </ul>
+}
+
+@code
+{
+    [Parameter]
+    public string Search { get; set; }
+
+    private IEnumerable<Cocktail> _cocktails = Enumerable.Empty<Cocktail>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (!string.IsNullOrEmpty(Search))
+        {
+            _cocktails = await _cocktailsService.SearchCocktails(Search);            
+        }
+    }
+}
