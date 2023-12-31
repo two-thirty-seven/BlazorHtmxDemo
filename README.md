@@ -8,4 +8,4 @@ Weather demonstrates how to do an HTMX load trigger which calls for markup when 
 
 PageLinks demonstrates how a popup menu can work.
 
-Cocktails is a multi-level HTMX pattern which searches a remote API for cocktails. HTMX loads the search results and clicking a result loads the detail via HTMX.  
+Cocktails is a multi-level HTMX page which searches a remote API for cocktails. HTMX loads the search results and clicking a result loads the detail via HTMX.  
