@@ -5,12 +5,14 @@ public static class CocktailEndpoints
 {
     public static WebApplication MapCocktailEndpoints(this WebApplication app)
     {
-        app.MapGet("/cocktails/search", (string search, CocktailsService cocktailsService) => {
-            return new RazorComponentResult<CocktailList>(new { Search = search });
+        app.MapGet("/cocktails/search", async (string search, CocktailsService cocktailsService) => {
+            IEnumerable<Cocktail> cocktails = await cocktailsService.SearchCocktails(search);
+            return new RazorComponentResult<CocktailList>(new { Search = search, Cocktails = cocktails });
         });
 
         app.MapGet("/cocktails/detail/{id}", (int id, CocktailsService cocktailsService) => {
-            return new RazorComponentResult<CocktailDetail>(new { Id = id });
+            Cocktail cocktail = cocktailsService.GetDrink(id);
+            return new RazorComponentResult<CocktailDetail>(new { Cocktail = cocktail });
         });
 
         return app;

@@ -1,10 +1,8 @@
-@inject CocktailsService _cocktailsService
-
-@if (_cocktails.Any())
+@if (Cocktails.Any())
 {
     <p>Matches for <em>@Search</em></p>
     <ul>
-        @foreach (var cocktail in _cocktails)
+        @foreach (var cocktail in Cocktails)
         {
             <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
         }
@@ -14,15 +12,8 @@
 @code
 {
     [Parameter]
-    public string Search { get; set; }
+    public string? Search { get; set; }
 
-    private IEnumerable<Cocktail> _cocktails = Enumerable.Empty<Cocktail>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        if (!string.IsNullOrEmpty(Search))
-        {
-            _cocktails = await _cocktailsService.SearchCocktails(Search);            
-        }
-    }
+    [Parameter]
+    public IEnumerable<Cocktail> Cocktails { get; set; } = Enumerable.Empty<Cocktail>();
 }
