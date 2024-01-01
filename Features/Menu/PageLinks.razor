@@ -1,13 +1,13 @@
-@if (PopupState == PopupMode.Closed)
+@if (MenuState == MenuViewMode.Closed)
 {
     <div id="menu">
-        <button class="btn btn-primary" hx-get="/api/links/Open" hx-target="#menu" hx-swap="outerHTML">Open Menu</button>
+        <button class="btn btn-primary" hx-get="/api/pagelinks" hx-target="#menu" hx-swap="outerHTML">Open Menu</button>
     </div>
 }
-@if (PopupState == PopupMode.Open)
+@if (MenuState == MenuViewMode.Open)
 {
-    <div id="menu" hx-get="/api/links/Closed" hx-trigger="mouseleave">
-        <button class="btn btn-primary" hx-get="/api/links/Closed" hx-target="#menu" hx-swap="outerHTML">Close Menu</button>
+    <div id="menu" hx-put="/api/pagelinks" hx-trigger="mouseleave">
+        <button class="btn btn-primary" hx-put="/api/pagelinks" hx-target="#menu" hx-swap="outerHTML">Close Menu</button>
         <div class="popup-menu">
             <a class="menu-link" href="/">Home</a>
             <a class="menu-link" href="counter">Counter</a>
@@ -20,9 +20,9 @@
 @code 
 {
     [Parameter]
-    public PopupMode PopupState { get; set; } = PopupMode.Closed;
+    public MenuViewMode MenuState { get; set; } = MenuViewMode.Closed;
 
-    public enum PopupMode
+    public enum MenuViewMode
     {
         Open,
         Closed

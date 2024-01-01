@@ -6,7 +6,9 @@ public static class MenuEndpoints
 {
     public static WebApplication MapMenuEndpoints(this WebApplication app)
     { 
-        app.MapGet("/api/links/{popupState}", (PopupMode popupState) => new RazorComponentResult<PageLinks>(new { PopupState = popupState }));
+        app.MapGet("/api/pagelinks", () => new RazorComponentResult<PageLinks>(new { MenuState = MenuViewMode.Open }));
+
+        app.MapPut("/api/pagelinks", () => new RazorComponentResult<PageLinks>(new { MenuState = MenuViewMode.Closed }));
 
         return app;
     }
