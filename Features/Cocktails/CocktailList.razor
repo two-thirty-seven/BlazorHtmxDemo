@@ -1,13 +1,10 @@
-@if (Cocktails.Any())
-{
-    <p>Matches for <em>@Search</em></p>
-    <ul>
-        @foreach (var cocktail in Cocktails)
-        {
-            <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
-        }
-    </ul>
-}
+<p>Matches for <em>@Search</em></p>
+<ul>
+    @foreach (var cocktail in Cocktails)
+    {
+        <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
+    }
+</ul>
 
 @code
 {
