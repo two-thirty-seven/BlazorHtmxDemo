@@ -1,0 +1,17 @@
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.controls {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+#photo-sheet {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}

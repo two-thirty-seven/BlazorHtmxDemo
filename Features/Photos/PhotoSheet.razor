@@ -1,0 +1,25 @@
+@inject PhotosService photosService
+
+@foreach (var photo in _photos)
+{
+    <div>
+        <a href="@photo.DownloadUrl" target="_blank">
+            <img src="@photo.ThumbnailUrl" class="shadow float-start m-2 photo-card" referrerpolicy="no-referrer" width="235" height="235" alt="@photo.Author" />
+        </a>    
+    </div>             
+}
+
+@code {
+    [Parameter]
+    public int Page { get; set; } = 1;
+
+    [Parameter]
+    public int Size { get; set; } = 16;
+
+    private IEnumerable<Photo> _photos = Enumerable.Empty<Photo>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _photos = await photosService.FetchPhotos(Page, Size);
+    }
+}

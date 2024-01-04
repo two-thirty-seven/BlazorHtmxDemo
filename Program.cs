@@ -1,5 +1,6 @@
 using BlazorHtmxDemo.Components;
 using BlazorHtmxDemo.Features.Cocktails;
+using BlazorHtmxDemo.Features.Photos;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMemoryCache();
 builder.Services.AddHttpClient();
 builder.Services.AddTransient<CocktailsService>();
+builder.Services.AddTransient<PhotosService>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
@@ -38,5 +40,6 @@ app.MapMenuEndpoints();
 app.MapCounterEndpoints();
 app.MapWeatherEndpoints();
 app.MapCocktailEndpoints();
+app.MapPhotosEndpoints();
 
 app.Run();

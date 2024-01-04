@@ -1,26 +1,37 @@
-<table class="table">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var forecast in Forecasts)
-        {
+    <table class="table">
+        <thead>
             <tr>
-                <td>@forecast.Date.ToShortDateString()</td>
-                <td>@forecast.TemperatureC</td>
-                <td>@forecast.TemperatureF</td>
-                <td>@forecast.Summary</td>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
             </tr>
-        }        
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var forecast in _forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }        
+        </tbody>
+    </table>
 
 @code {
-    [Parameter]
-    public IEnumerable<WeatherForecast> Forecasts { get; set; } = Enumerable.Empty<WeatherForecast>();
+    private IEnumerable<WeatherForecast> _forecasts = Enumerable.Empty<WeatherForecast>();
+
+    protected override void OnInitialized()
+    {
+        var startDate = DateOnly.FromDateTime(DateTime.Now);
+        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+        _forecasts = Enumerable.Range(1, 10).Select(index => new WeatherForecast
+        {
+            Date = startDate.AddDays(index),
+            TemperatureC = Random.Shared.Next(-20, 55),
+            Summary = summaries[Random.Shared.Next(summaries.Length)]
+        }).ToArray();
+    }
 }

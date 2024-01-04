@@ -1,15 +1,15 @@
 @inject CocktailsService CocktailsService
 
-@if (Cocktail != null)
+@if (_cocktail != null)
 {
     <div class="row">
         <div class="cocktail-ingredients">
-            <h3>@Cocktail.Name</h3>
-            <div>Glass: @Cocktail.Glass</div>
+            <h3>@_cocktail.Name</h3>
+            <div>Glass: @_cocktail.Glass</div>
             <div>
             Ingredients:
             <ul>
-                @foreach (var ingredient in @Cocktail.Ingredients)
+                @foreach (var ingredient in _cocktail.Ingredients)
                     {
                         <li>@ingredient.measure @ingredient.name</li>
 
@@ -18,15 +18,22 @@
                 </ul>
             </div>
             <div>Instructions</div>
-            <div>@Cocktail.Instructions</div>
+            <div>@_cocktail.Instructions</div>
         </div>
         <div class="cocktail-photo">
-            <img src="@Cocktail.Thumbnail" alt="Photo of @Cocktail.Name" />
+            <img src="@_cocktail.Thumbnail" alt="Photo of @_cocktail.Name" />
         </div>
     </div>
 }
 
 @code {
     [Parameter]
-    public Cocktail? Cocktail { get; set; }
+    public int Id { get; set; }
+
+    private Cocktail? _cocktail;
+
+    protected override void OnInitialized()
+    {
+        _cocktail = CocktailsService.GetDrink(Id);
+    }
 }
