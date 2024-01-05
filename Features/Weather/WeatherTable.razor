@@ -8,7 +8,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in _forecasts)
+            @foreach (var forecast in Forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -21,17 +21,6 @@
     </table>
 
 @code {
-    private IEnumerable<WeatherForecast> _forecasts = Enumerable.Empty<WeatherForecast>();
-
-    protected override void OnInitialized()
-    {
-        var startDate = DateOnly.FromDateTime(DateTime.Now);
-        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
-        _forecasts = Enumerable.Range(1, 10).Select(index => new WeatherForecast
-        {
-            Date = startDate.AddDays(index),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = summaries[Random.Shared.Next(summaries.Length)]
-        }).ToArray();
-    }
+    [Parameter]
+    public IEnumerable<WeatherForecast> Forecasts { get; set; } = Enumerable.Empty<WeatherForecast>();
 }

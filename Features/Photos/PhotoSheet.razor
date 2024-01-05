@@ -1,6 +1,6 @@
 @inject PhotosService photosService
 
-@foreach (var photo in _photos)
+@foreach (var photo in Photos)
 {
     <div>
         <a href="@photo.DownloadUrl" target="_blank">
@@ -11,15 +11,5 @@
 
 @code {
     [Parameter]
-    public int Page { get; set; } = 1;
-
-    [Parameter]
-    public int Size { get; set; } = 16;
-
-    private IEnumerable<Photo> _photos = Enumerable.Empty<Photo>();
-
-    protected override async Task OnInitializedAsync()
-    {
-        _photos = await photosService.FetchPhotos(Page, Size);
-    }
+    public IEnumerable<Photo> Photos { get; set; } = Enumerable.Empty<Photo>();
 }
