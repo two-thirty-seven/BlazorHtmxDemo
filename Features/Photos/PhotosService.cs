@@ -3,7 +3,6 @@
 public class PhotosService
 {
     private readonly IHttpClientFactory _httpClientFactory;
-    private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
 
     public PhotosService(IConfiguration configuration, IHttpClientFactory httpClientFactory)
