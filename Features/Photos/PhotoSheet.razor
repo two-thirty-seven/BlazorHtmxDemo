@@ -1,15 +1,21 @@
 @inject PhotosService photosService
+@inject IHttpContextAccessor contextAccessor
 
-@foreach (var photo in Photos)
+<div>
+@foreach (var photo in _photos)
 {
-    <div>
-        <a href="@photo.DownloadUrl" target="_blank">
-            <img src="@photo.ThumbnailUrl" class="shadow float-start m-2 photo-card" referrerpolicy="no-referrer" width="235" height="235" alt="@photo.Author" />
-        </a>    
-    </div>             
+    <a href="@photo.DownloadUrl" target="_blank">
+        <img src="@photo.ThumbnailUrl" class="shadow float-start m-2 photo-card" referrerpolicy="no-referrer" width="235" height="235" alt="@photo.Author" />
+    </a>
 }
+</div>
 
 @code {
-    [Parameter]
-    public IEnumerable<Photo> Photos { get; set; } = Enumerable.Empty<Photo>();
+    public IEnumerable<Photo> _photos = Enumerable.Empty<Photo>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>("PhotosState");
+        _photos = await photosService.FetchPhotos(state.Page, state.Size);
+    }
 }
