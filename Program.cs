@@ -17,6 +17,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 builder.Services.AddRazorComponents();
+builder.Services.AddControllers();
 
 var app = builder.Build();
 
@@ -41,5 +42,6 @@ app.MapCounterEndpoints();
 app.MapWeatherEndpoints();
 app.MapCocktailEndpoints();
 app.MapPhotosEndpoints();
+app.MapControllers();
 
 app.Run();
