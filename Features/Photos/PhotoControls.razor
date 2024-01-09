@@ -17,7 +17,7 @@
 
     protected override void OnInitialized()
     {
-        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>("PhotosState");
+        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>();
         _page = state.Page;
         _size = state.Size;
     }

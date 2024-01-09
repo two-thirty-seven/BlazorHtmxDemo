@@ -9,11 +9,9 @@ public static class CounterEndpoints
 
         app.MapPost("/api/counter", (HttpContext context) =>
         {
-            int currentCount = context.Session.GetInt32("CurrentCount").Value;
-            currentCount++;
-            context.Session.SetInt32("CurrentCount", currentCount);
+            var state = context.Session.GetObjectFromJson<CounterState>();
+            context.Session.SetObjectAsJson<CounterState>(state with { CurrentCount = state.CurrentCount + 1 });
             context.Response.Headers.Append("HX-Trigger", "counter-updated");
-
             return new RazorComponentResult<CurrentCount>();
         });
 

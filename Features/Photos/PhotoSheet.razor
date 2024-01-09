@@ -15,7 +15,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>("PhotosState");
+        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>();
         _photos = await photosService.FetchPhotos(state.Page, state.Size);
     }
 }

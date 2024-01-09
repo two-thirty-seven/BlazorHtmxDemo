@@ -1,4 +1,4 @@
-@inject IHttpContextAccessor _httpContext
+@inject IHttpContextAccessor contextAccessor
 
 Current count: @_currentCount
 
@@ -7,16 +7,7 @@ Current count: @_currentCount
 
     protected override void OnInitialized()
     {
-        int? sessionCount = _httpContext.HttpContext.Session.GetInt32("CurrentCount");
-        if (sessionCount.HasValue)
-        {
-            _currentCount = (int)sessionCount;
-        }
-        else 
-        {
-            _currentCount = 0;            
-        }
-
-        _httpContext.HttpContext.Session.SetInt32("CurrentCount", _currentCount);
+        CounterState state = contextAccessor.HttpContext.Session.GetObjectFromJson<CounterState>();
+        _currentCount = state.CurrentCount;
     }
 }
