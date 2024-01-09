@@ -9,3 +9,5 @@ Weather demonstrates how to do an HTMX load trigger which calls for markup when 
 PageLinks demonstrates how a popup menu can work.
 
 Cocktails is a multi-level HTMX page which searches a remote API for cocktails. HTMX loads the search results and clicking a result loads the detail via HTMX.  
+
+Photos is a multi-component page which loads a selection of photos from Picsum based on the page number and size of page. It demonstrates how to use an HX-Trigger to update the photos based on the values in the PhotosControl component. All values are persisted in session state.
