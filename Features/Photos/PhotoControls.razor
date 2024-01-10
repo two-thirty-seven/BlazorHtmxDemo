@@ -6,21 +6,17 @@
     <button class="btn btn-primary" aria-label="Next" hx-post="/photos/next" hx-target="closest .control-panel">Next</button>
 </form>
 <form hx-post="/photos/search" hx-target="closest .control-panel" class="controls">
-    <input type="number" name="page" class="form-control" aria-label="Page" min="1" max="3000" value="@_page"/>
-    <input type="number" name="size" class="form-control" aria-label="Length" min="1" max="100" value="@_size"/>
+    <input type="number" name="page" class="form-control" aria-label="Page" min="1" max="3000" value="@_state.Page"/>
+    <input type="number" name="size" class="form-control" aria-label="Length" min="1" max="100" value="@_state.Size"/>
     <button class="btn btn-primary" aria-label="Load" type="submit">Load</button>
     <AntiforgeryToken/>
 </form>
 
 @code {
-    private int _page;
-
-    private int _size;
+    private PhotosState _state;
 
     protected override void OnInitialized()
     {
-        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>();
-        _page = state.Page;
-        _size = state.Size;
+        _state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>();
     }
 }

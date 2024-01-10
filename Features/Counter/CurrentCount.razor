@@ -1,13 +1,12 @@
 @inject IHttpContextAccessor contextAccessor
 
-Current count: @_currentCount
+Current count: @_state.CurrentCount
 
 @code {
-    private int _currentCount = 0;
+    private CounterState _state;
 
     protected override void OnInitialized()
     {
-        CounterState state = contextAccessor.HttpContext.Session.GetObjectFromJson<CounterState>();
-        _currentCount = state.CurrentCount;
+        _state = contextAccessor.HttpContext.Session.GetObjectFromJson<CounterState>();
     }
 }
