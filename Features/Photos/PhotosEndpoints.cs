@@ -1,5 +1,6 @@
 using BlazorHtmxDemo.Features.Photos;
 using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 
 public static class PhotosEndpoints
 {
@@ -13,21 +14,21 @@ public static class PhotosEndpoints
             return new RazorComponentResult<PhotoSheet>();
         });
 
-        app.MapGet("/photos/search", (int page, int size, HttpContext context) => {
+        app.MapPost("/photos/search", ([FromForm]int page, [FromForm]int size, HttpContext context) => {
             var state = context.Session.GetObjectFromJson<PhotosState>();
             context.Session.SetObjectAsJson<PhotosState>(state with { Page = page, Size = size });
             context.Response.Headers.Append("HX-Trigger", "photos-state-updated");
             return new RazorComponentResult<PhotoControls>();
         });
 
-        app.MapGet("/photos/prev", (HttpContext context) => {
+        app.MapPost("/photos/prev", (HttpContext context) => {
             var state = context.Session.GetObjectFromJson<PhotosState>();
             context.Session.SetObjectAsJson<PhotosState>(state with { Page = state.Page - 1 });
             context.Response.Headers.Append("HX-Trigger", "photos-state-updated");
             return new RazorComponentResult<PhotoControls>();
         });
 
-        app.MapGet("/photos/next", (HttpContext context) => {
+        app.MapPost("/photos/next", (HttpContext context) => {
             var state = context.Session.GetObjectFromJson<PhotosState>();
             context.Session.SetObjectAsJson<PhotosState>(state with { Page = state.Page + 1 });
             context.Response.Headers.Append("HX-Trigger", "photos-state-updated");

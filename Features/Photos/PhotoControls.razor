@@ -1,13 +1,15 @@
+@using Microsoft.AspNetCore.Components.Forms
 @inject IHttpContextAccessor contextAccessor
 
 <form class="controls">
-    <button class="btn btn-primary" aria-label="Prev" hx-get="/photos/prev" hx-target="closest .control-panel">Prev</button>
-    <button class="btn btn-primary" aria-label="Next" hx-get="/photos/next" hx-target="closest .control-panel">Next</button>
+    <button class="btn btn-primary" aria-label="Prev" hx-post="/photos/prev" hx-target="closest .control-panel">Prev</button>
+    <button class="btn btn-primary" aria-label="Next" hx-post="/photos/next" hx-target="closest .control-panel">Next</button>
 </form>
-<form hx-get="/photos/search" hx-target="closest .control-panel" class="controls">
+<form hx-post="/photos/search" hx-target="closest .control-panel" class="controls">
     <input type="number" name="page" class="form-control" aria-label="Page" min="1" max="3000" value="@_page"/>
     <input type="number" name="size" class="form-control" aria-label="Length" min="1" max="100" value="@_size"/>
     <button class="btn btn-primary" aria-label="Load" type="submit">Load</button>
+    <AntiforgeryToken/>
 </form>
 
 @code {
