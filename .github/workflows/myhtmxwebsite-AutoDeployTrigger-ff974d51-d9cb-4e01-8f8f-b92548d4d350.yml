@@ -35,12 +35,9 @@ jobs:
         uses: azure/container-apps-deploy-action@v2
         with:
           appSourcePath: ${{ github.workspace }}
-          dockerfilePath: 'Dockerfile' # Ensure your Dockerfile is in the root, or provide the correct path
           registryUrl: rpkcontainers.azurecr.io
           registryUsername: ${{ secrets.MYHTMXWEBSITE_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.MYHTMXWEBSITE_REGISTRY_PASSWORD }}
           containerAppName: myhtmxwebsite
           resourceGroup: rpk-websites
           imageToBuild: rpkcontainers.azurecr.io/myhtmxwebsite:${{ github.sha }}
-          buildArguments: |
-            --build-arg BASE_IMAGE=mcr.microsoft.com/dotnet/aspnet:9.0-bookworm-slim # Update to a valid and existing .NET image
