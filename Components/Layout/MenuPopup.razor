@@ -1,4 +1,7 @@
-﻿<button onclick="window.my_modal.showModal();" hx-get="/api/pagelinks" hx-target="#my_modal" class="btn btn-primary">Menu</button>
+﻿<button onclick="window.my_modal.showModal();" hx-get="/api/pagelinks" hx-target="#my_modal_content" class="btn btn-primary">Menu</button>
 <dialog id="my_modal">
-    <button type="button" onclick="window.my_modal.close();">Close</button>
+    <div class="position-absolute top-0 end-0 p-2">
+        <button class="btn btn-close" type="button" onclick="window.my_modal.close();"></button>
+    </div>
+    <div id="my_modal_content"></div>
 </dialog>
