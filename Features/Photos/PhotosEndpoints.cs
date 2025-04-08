@@ -6,13 +6,9 @@ public static class PhotosEndpoints
 {
     public static WebApplication MapPhotosEndpoints(this WebApplication app)
     {
-        app.MapGet("/photos/controls", () => {
-            return new RazorComponentResult<PhotoControls>();
-        });
+        app.MapGet("/photos/controls", () => new RazorComponentResult<PhotoControls>());
 
-        app.MapGet("/photos/sheet", () => {
-            return new RazorComponentResult<PhotoSheet>();
-        });
+        app.MapGet("/photos/sheet", () => new RazorComponentResult<PhotoSheet>());
 
         app.MapPost("/photos/search", ([FromForm]int page, [FromForm]int size, HttpContext context) => {
             var state = context.Session.GetObjectFromJson<PhotosState>();

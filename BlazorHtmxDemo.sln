@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35919.96 d17.13
+VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorHtmxDemo", "BlazorHtmxDemo.csproj", "{E4D08546-ADB6-EC0B-1DD3-2050AC493932}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorHtmxDemo", "BlazorHtmxDemo.csproj", "{167142F5-0A92-407D-B13E-AFBA82631203}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E4D08546-ADB6-EC0B-1DD3-2050AC493932}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E4D08546-ADB6-EC0B-1DD3-2050AC493932}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E4D08546-ADB6-EC0B-1DD3-2050AC493932}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E4D08546-ADB6-EC0B-1DD3-2050AC493932}.Release|Any CPU.Build.0 = Release|Any CPU
+		{167142F5-0A92-407D-B13E-AFBA82631203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{167142F5-0A92-407D-B13E-AFBA82631203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{167142F5-0A92-407D-B13E-AFBA82631203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{167142F5-0A92-407D-B13E-AFBA82631203}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {E5F15BF2-76AD-4F54-8CCB-D1880FF4F09C}
+		SolutionGuid = {8A9AB654-8771-459B-BB40-A6D1B74B3266}
 	EndGlobalSection
 EndGlobal

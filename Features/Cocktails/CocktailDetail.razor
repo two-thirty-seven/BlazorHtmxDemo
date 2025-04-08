@@ -1,7 +1,7 @@
 @if (Cocktail != null)
 {
     <div class="row">
-        <div class="cocktail-ingredients">
+        <div class="cocktail-ingredients col-8">
             <h3>@Cocktail.Name</h3>
             <div>Glass: @Cocktail.Glass</div>
             <div>
@@ -18,7 +18,7 @@
             <div>Instructions</div>
             <div>@Cocktail.Instructions</div>
         </div>
-        <div class="cocktail-photo">
+        <div class="cocktail-photo col-4">
             <img src="@Cocktail.Thumbnail" alt="Photo of @Cocktail.Name" />
         </div>
     </div>

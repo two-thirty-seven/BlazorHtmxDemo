@@ -4,19 +4,12 @@
 
 <div class="container-fluid">
     <div class="row control-panel">
-        <div class="col-11">
-            <input type="text" name="search" class="form-control" label="Length" min="0" max="100" hx-get="/cocktails/search" hx-trigger="keyup changed delay:500ms" hx-target="#cocktail-list" hx-indicator="#cocktails-loading" />
+        <div class="col-6">
+            <input type="text" name="search" class="form-control" label="Length" min="0" max="100" hx-get="/cocktails/search" hx-trigger="load, keyup changed delay:500ms" hx-target="#cocktail-list" hx-indicator="#cocktails-loading" />
         </div>
-        <div class="col-1">
+        <div class="col-6 text-end">
             <span id="cocktails-loading" class="htmx-indicator">Loading...</span>
         </div>
     </div>
-    <div class="row">
-        <div class="col-4">
-            <div id="cocktail-list"></div>
-        </div>
-        <div class="col-8">
-            <div id="cocktail-detail"></div>
-        </div>
-    </div>
+    <div class="row" id="cocktail-list"></div>
 </div>
