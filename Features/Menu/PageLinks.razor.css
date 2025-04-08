@@ -1,11 +1,6 @@
 .popup-menu {
-    border: 1px solid #ccc;
-    position: absolute;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
-    background: #eee;
-    box-shadow: 0 8px 8px -4px lightblue;
     min-width: 150px;
 }
 

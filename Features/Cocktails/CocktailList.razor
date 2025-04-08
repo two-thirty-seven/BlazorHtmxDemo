@@ -1,16 +1,37 @@
-<p>Matches for <em>@Search</em></p>
-<ul>
-    @foreach (var cocktail in Cocktails)
-    {
-        <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
-    }
-</ul>
+@inject CocktailsService cocktailsService
+
+@if (Cocktails.Any())
+{
+    <div class="col-4">
+        <p>Matches for <em>@Search</em></p>
+        <ul>
+            @foreach (var cocktail in Cocktails)
+            {
+                <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div class="col-8">
+        <div id="cocktail-detail"></div>
+    </div>
+}
+else 
+{
+    <div>Type a cocktail or ingredient to get started</div>
+}
 
 @code
 {
     [Parameter]
     public string? Search { get; set; }
 
-    [Parameter]
-    public IEnumerable<Cocktail> Cocktails { get; set; } = Enumerable.Empty<Cocktail>();
+    private IEnumerable<Cocktail> Cocktails = Enumerable.Empty<Cocktail>();
+
+    override protected async Task OnParametersSetAsync()
+    {
+        if (!string.IsNullOrWhiteSpace(Search))
+        {
+            Cocktails = await cocktailsService.SearchCocktails(Search);
+        }
+    }
 }
