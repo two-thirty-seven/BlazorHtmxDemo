@@ -2,8 +2,9 @@
 
 <h1>Counter</h1>
 
-<p role="status" id="current-count" hx-get="/api/counter">
+<span hx-get="/api/counter" hx-trigger="counter-updated from:body">
     <CurrentCount />
-</p>
+</span>
 
-<button class="btn btn-primary" hx-post="/api/counter" hx-target="#current-count">Click me</button>
+<CounterAction Increment="1"/>
+<CounterAction Increment="-1"/>

@@ -20,6 +20,11 @@ public class CocktailsService
 
     public async Task<IEnumerable<Cocktail>> SearchCocktails(string name)
     {
+        if (string.IsNullOrEmpty(name))
+        {
+            return Array.Empty<Cocktail>();
+        }
+
         var baseUrl = _configuration.GetValue<string>($"Urls:Cocktails");
         var request = $"{baseUrl}/api/json/v1/1/search.php?s={name}";
 

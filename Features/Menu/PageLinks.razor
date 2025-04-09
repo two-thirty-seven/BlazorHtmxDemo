@@ -1,31 +1,7 @@
-@if (MenuState == MenuViewMode.Closed)
-{
-    <div id="menu">
-        <button class="btn btn-primary" hx-get="/api/pagelinks" hx-target="#menu" hx-swap="outerHTML">Open Menu</button>
-    </div>
-}
-@if (MenuState == MenuViewMode.Open)
-{
-    <div id="menu" hx-put="/api/pagelinks" hx-trigger="mouseleave">
-        <button class="btn btn-primary" hx-put="/api/pagelinks" hx-target="#menu" hx-swap="outerHTML">Close Menu</button>
-        <div class="popup-menu">
-            <a class="menu-link" href="/">Home</a>
-            <a class="menu-link" href="counter">Counter</a>
-            <a class="menu-link" href="weather">Weather</a>
-            <a class="menu-link" href="cocktails">Cocktails</a>
-            <a class="menu-link" href="photos">Photos</a>
-        </div>
-    </div>
-}
-
-@code 
-{
-    [Parameter]
-    public MenuViewMode MenuState { get; set; } = MenuViewMode.Closed;
-
-    public enum MenuViewMode
-    {
-        Open,
-        Closed
-    }
-}
+<div class="popup-menu">
+    <a class="menu-link" href="/" >Home</a>
+    <a class="menu-link" href="/counter" >Counter</a>
+    <a class="menu-link" href="/weather" >Weather</a>
+    <a class="menu-link" href="/cocktails" >Cocktails</a>
+    <a class="menu-link" href="/photos" >Photos</a>
+</div>

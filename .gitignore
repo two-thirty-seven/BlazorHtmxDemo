@@ -3,3 +3,5 @@ obj/*
 publish/*
 .vscode/*
 node_modules/*
+/.vs
+/BlazorHtmxDemo.csproj.user

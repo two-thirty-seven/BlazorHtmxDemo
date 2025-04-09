@@ -7,12 +7,12 @@ public static class CounterEndpoints
     {
         app.MapGet("/api/counter", () => new RazorComponentResult<CurrentCount>());
 
-        app.MapPost("/api/counter", (HttpContext context) =>
+        app.MapPut("/api/counter/{increment}", (HttpContext context, int increment) =>
         {
             var state = context.Session.GetObjectFromJson<CounterState>();
-            context.Session.SetObjectAsJson<CounterState>(state with { CurrentCount = state.CurrentCount + 1 });
+            context.Session.SetObjectAsJson<CounterState>(state with { CurrentCount = state.CurrentCount + increment });
             context.Response.Headers.Append("HX-Trigger", "counter-updated");
-            return new RazorComponentResult<CurrentCount>();
+            return new RazorComponentResult<CounterAction>(new { Increment = increment });
         });
 
         return app;
