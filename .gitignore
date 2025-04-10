@@ -5,3 +5,5 @@ publish/*
 node_modules/*
 /.vs
 /BlazorHtmxDemo.csproj.user
+
+.idea/.idea.BlazorHtmxDemo/.idea/
