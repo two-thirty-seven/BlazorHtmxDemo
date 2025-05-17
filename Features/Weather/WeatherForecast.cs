@@ -1,3 +1,5 @@
+namespace BlazorHtmxDemo.Features.Weather;
+
 public class WeatherForecast
 {
     public DateOnly Date { get; set; }

@@ -1,13 +1,13 @@
-@inject CocktailsService cocktailsService
+@inject CocktailsService CocktailsService
 
-@if (Cocktails.Any())
+@if (_cocktails.Any())
 {
     <div class="col-4">
         <p>Matches for <em>@Search</em></p>
         <ul>
-            @foreach (var cocktail in Cocktails)
+            @foreach (var cocktail in _cocktails)
             {
-                <li><a href="#" hx-get="/cocktails/detail/@cocktail.id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
+                <li><a href="#" hx-get="/cocktails/detail/@cocktail.Id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
             }
         </ul>
     </div>
@@ -25,13 +25,13 @@ else
     [Parameter]
     public string? Search { get; set; }
 
-    private IEnumerable<Cocktail> Cocktails = Enumerable.Empty<Cocktail>();
+    private IEnumerable<Cocktail> _cocktails = [];
 
-    override protected async Task OnParametersSetAsync()
+    protected override async Task OnParametersSetAsync()
     {
         if (!string.IsNullOrWhiteSpace(Search))
         {
-            Cocktails = await cocktailsService.SearchCocktails(Search);
+            _cocktails = await CocktailsService.SearchCocktails(Search);
         }
     }
 }

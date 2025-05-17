@@ -1,3 +1,3 @@
 namespace BlazorHtmxDemo.Features.Cocktails;
 
-public record Ingredient(string name, string measure) { }
+public record Ingredient(string Name, string Measure) { }

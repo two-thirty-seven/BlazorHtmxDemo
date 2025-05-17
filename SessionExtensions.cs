@@ -10,6 +10,6 @@ public static class SessionExtensions
   public static T GetObjectFromJson<T>(this ISession session)
   {
       var value = session.GetString(typeof(T).Name);
-      return value == null ? Activator.CreateInstance<T>() : JsonSerializer.Deserialize<T>(value);
+      return (value == null ? Activator.CreateInstance<T>() : JsonSerializer.Deserialize<T>(value))!;
   }
 }

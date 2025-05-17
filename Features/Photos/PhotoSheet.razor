@@ -1,5 +1,5 @@
-@inject PhotosService photosService
-@inject IHttpContextAccessor contextAccessor
+@inject PhotosService PhotosService
+@inject IHttpContextAccessor ContextAccessor
 
 <div>
 @foreach (var photo in _photos)
@@ -11,11 +11,11 @@
 </div>
 
 @code {
-    public IEnumerable<Photo> _photos = Enumerable.Empty<Photo>();
+    private IEnumerable<Photo> _photos = [];
 
     protected override async Task OnInitializedAsync()
     {
-        PhotosState state = contextAccessor.HttpContext.Session.GetObjectFromJson<PhotosState>();
-        _photos = await photosService.FetchPhotos(state.Page, state.Size);
+        var state = ContextAccessor.HttpContext!.Session.GetObjectFromJson<PhotosState>();
+        _photos = await PhotosService.FetchPhotos(state.Page, state.Size);
     }
 }

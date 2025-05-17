@@ -1,15 +1,15 @@
 using System.Text.Json.Nodes;
 
-namespace BlazorHtmxDemo.Extensions;
+namespace BlazorHtmxDemo.Features.Cocktails;
 
 public static class JsonNodeExtensions
 {
-    public static string GetString(this JsonNode node)
+    public static string GetString(this JsonNode? node)
     {
         return node == null ? "" : node.ToString();
     }
 
-    public static int GetInt32(this JsonNode node)
+    public static int GetInt32(this JsonNode? node)
     {
         var stringValue = node.GetString();
 

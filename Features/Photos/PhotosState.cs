@@ -1,4 +1,4 @@
-using BlazorHtmxDemo.Features.Photos;
+namespace BlazorHtmxDemo.Features.Photos;
 
 public record PhotosState(int Page, int Size)
 {

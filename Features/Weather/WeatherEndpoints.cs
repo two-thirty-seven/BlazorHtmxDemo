@@ -1,5 +1,6 @@
-using BlazorHtmxDemo.Features.Weather;
 using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace BlazorHtmxDemo.Features.Weather;
 
 public static class WeatherEndpoints
 {

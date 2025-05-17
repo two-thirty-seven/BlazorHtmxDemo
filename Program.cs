@@ -1,6 +1,10 @@
 using BlazorHtmxDemo.Components;
 using BlazorHtmxDemo.Features.Cocktails;
+using BlazorHtmxDemo.Features.Counter;
+using BlazorHtmxDemo.Features.Home;
+using BlazorHtmxDemo.Features.Menu;
 using BlazorHtmxDemo.Features.Photos;
+using BlazorHtmxDemo.Features.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,7 @@
-using BlazorHtmxDemo.Features.Photos;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+
+namespace BlazorHtmxDemo.Features.Photos;
 
 public static class PhotosEndpoints
 {
@@ -17,16 +18,17 @@ public static class PhotosEndpoints
             return new RazorComponentResult<PhotoControls>();
         });
 
-        app.MapPost("/photos/prev", (HttpContext context) => {
+        app.MapPatch("/photos/{direction}", (HttpContext context, string direction) =>
+        {
+            var increment = direction switch
+            {
+                "next" => 1,
+                "prev" => -1,
+                _ => 0, // "next" or "previous" should be the only values we get here, but just in case...
+            };
+            
             var state = context.Session.GetObjectFromJson<PhotosState>();
-            context.Session.SetObjectAsJson<PhotosState>(state with { Page = state.Page - 1 });
-            context.Response.Headers.Append("HX-Trigger", "photos-state-updated");
-            return new RazorComponentResult<PhotoControls>();
-        });
-
-        app.MapPost("/photos/next", (HttpContext context) => {
-            var state = context.Session.GetObjectFromJson<PhotosState>();
-            context.Session.SetObjectAsJson<PhotosState>(state with { Page = state.Page + 1 });
+            context.Session.SetObjectAsJson<PhotosState>(state with { Page = state.Page + increment });
             context.Response.Headers.Append("HX-Trigger", "photos-state-updated");
             return new RazorComponentResult<PhotoControls>();
         });

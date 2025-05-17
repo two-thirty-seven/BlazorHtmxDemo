@@ -1,10 +1,10 @@
 @page "/session"
-@inject IHttpContextAccessor contextAccessor
+@inject IHttpContextAccessor ContextAccessor
 
-@foreach (var key in contextAccessor.HttpContext.Session.Keys)
+@foreach (var key in ContextAccessor.HttpContext!.Session.Keys)
 {
     <div>
         <h1>@key</h1>
-        <div>@contextAccessor.HttpContext.Session.GetString(key)</div>
+        <div>@ContextAccessor.HttpContext.Session.GetString(key)</div>
     </div>
 }

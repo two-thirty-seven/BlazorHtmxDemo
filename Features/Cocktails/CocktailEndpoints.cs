@@ -1,5 +1,6 @@
-using BlazorHtmxDemo.Features.Cocktails;
 using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace BlazorHtmxDemo.Features.Cocktails;
 
 public static class CocktailEndpoints
 {

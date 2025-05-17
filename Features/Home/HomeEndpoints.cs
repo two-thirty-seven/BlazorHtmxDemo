@@ -1,5 +1,6 @@
-using BlazorHtmxDemo.Features.Home;
 using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace BlazorHtmxDemo.Features.Home;
 
 public static class HomeEndpoints
 {

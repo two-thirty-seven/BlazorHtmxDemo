@@ -1,5 +1,6 @@
-using BlazorHtmxDemo.Features.Counter;
 using Microsoft.AspNetCore.Http.HttpResults;
+
+namespace BlazorHtmxDemo.Features.Counter;
 
 public static class CounterEndpoints
 {
