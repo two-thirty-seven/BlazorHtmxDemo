@@ -1,8 +1,8 @@
 @inject CocktailsService CocktailsService
 
-@if (_cocktails.Any())
-{
-    <div class="col-4">
+<section id="cocktail-list">
+    @if (_cocktails.Any())
+    {
         <p>Matches for <em>@Search</em></p>
         <ul>
             @foreach (var cocktail in _cocktails)
@@ -10,15 +10,14 @@
                 <li><a href="#" hx-get="/cocktails/detail/@cocktail.Id" hx-target="#cocktail-detail">@cocktail.Name</a></li>
             }
         </ul>
-    </div>
-    <div class="col-8">
-        <div id="cocktail-detail"></div>
-    </div>
-}
-else 
-{
-    <div>Type a cocktail or ingredient to get started</div>
-}
+    }
+    else 
+    {
+        <div>Type a cocktail or ingredient to get started</div>
+    }
+</section>
+
+<section id="cocktail-detail" hx-swap-oob="true"></section>
 
 @code
 {
