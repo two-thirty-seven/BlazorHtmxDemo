@@ -1,10 +1,7 @@
+using BlazorHtmxDemo;
 using BlazorHtmxDemo.Components;
 using BlazorHtmxDemo.Features.Cocktails;
-using BlazorHtmxDemo.Features.Counter;
-using BlazorHtmxDemo.Features.Home;
-using BlazorHtmxDemo.Features.Menu;
 using BlazorHtmxDemo.Features.Photos;
-using BlazorHtmxDemo.Features.Weather;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,6 +19,7 @@ builder.Services.AddSession(options =>
 });
 builder.Services.AddRazorComponents();
 builder.Services.AddControllers();
+builder.Services.AddEndpoints(typeof(Program).Assembly);
 
 var app = builder.Build();
 
@@ -36,17 +34,10 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+app.MapStaticAssets();
 app.UseAntiforgery();
 app.UseSession();
 app.MapRazorComponents<App>();
-
-app.MapHomeEndpoints();
-app.MapMenuEndpoints();
-app.MapCounterEndpoints();
-app.MapWeatherEndpoints();
-app.MapCocktailEndpoints();
-app.MapPhotosEndpoints();
-app.MapControllers();
-app.MapStaticAssets();
+app.MapEndpoints();
 
 app.Run();

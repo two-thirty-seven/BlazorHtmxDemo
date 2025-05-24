@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Weather;
 
-public static class WeatherEndpoints
+public class WeatherEndpoints : IEndpoint
 {
-    public static WebApplication MapWeatherEndpoints(this WebApplication app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("/weather/forecasts", () => {
             var startDate = DateOnly.FromDateTime(DateTime.Now);
@@ -17,7 +17,5 @@ public static class WeatherEndpoints
             }).ToArray();
             return new RazorComponentResult<WeatherTable>(new { Forecasts = forecasts });
         });
-
-        return app;
     }
 }
