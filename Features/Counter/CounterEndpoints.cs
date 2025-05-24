@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Counter;
 
-public static class CounterEndpoints
+public class CounterEndpoints : IEndpoint
 {
-    public static WebApplication MapCounterEndpoints(this WebApplication app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/counter", () => new RazorComponentResult<CurrentCount>());
 
@@ -16,7 +16,5 @@ public static class CounterEndpoints
             
             return new RazorComponentResult<CurrentCount>();
         });
-
-        return app;
     }
 }

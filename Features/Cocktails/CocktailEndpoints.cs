@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Cocktails;
 
-public static class CocktailEndpoints
+public class CocktailEndpoints : IEndpoint
 {
-    public static WebApplication MapCocktailEndpoints(this WebApplication app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("/cocktails/search", (string search) => new RazorComponentResult<CocktailList>(new { Search = search }));
 
@@ -12,7 +12,5 @@ public static class CocktailEndpoints
             var cocktail = cocktailsService.GetDrink(id);
             return new RazorComponentResult<CocktailDetail>(new { Cocktail = cocktail });
         });
-
-        return app;
     }
 }
