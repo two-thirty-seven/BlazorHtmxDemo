@@ -2,12 +2,10 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Menu;
 
-public static class MenuEndpoints
+public class MenuEndpoints : IEndpoint
 {
-    public static WebApplication MapMenuEndpoints(this WebApplication app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     { 
         app.MapGet("/api/pagelinks", () => new RazorComponentResult<PageLinks>());
-
-        return app;
     }
 }

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorHtmxDemo.Features.Photos;
 
-public static class PhotosEndpoints
+public class PhotosEndpoints : IEndpoint
 {
-    public static WebApplication MapPhotosEndpoints(this WebApplication app)
+    public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("/photos/controls", () => new RazorComponentResult<PhotoControls>());
 
@@ -32,7 +32,5 @@ public static class PhotosEndpoints
             context.Response.Headers.Append("HX-Trigger", "photos-state-updated");
             return new RazorComponentResult<PhotoControls>();
         });
-
-        return app;
     }
 }
