@@ -20,6 +20,7 @@ builder.Services.AddSession(options =>
 builder.Services.AddRazorComponents();
 builder.Services.AddControllers();
 builder.Services.AddEndpoints(typeof(Program).Assembly);
+builder.Services.AddAntiforgery();
 
 var app = builder.Build();
 

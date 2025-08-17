@@ -8,7 +8,7 @@ public class WeatherEndpoints : IEndpoint
     {
         app.MapGet("/weather/forecasts", () => {
             var startDate = DateOnly.FromDateTime(DateTime.Now);
-            var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+            string[] summaries = ["Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"];
             var forecasts = Enumerable.Range(1, 10).Select(index => new WeatherForecast
             {
                 Date = startDate.AddDays(index),
