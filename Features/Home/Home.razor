@@ -9,6 +9,4 @@ Welcome to your new app.
 <button class="btn btn-primary" hx-get="/api/love-htmx" hx-target="#header">Click me</button>
 
 <div hx-get="/Person" hx-trigger="load"></div>
-
-<div hx-get="/Person/12" hx-trigger="load"></div>
-
+<div id="people-list" hx-get="/person-list" hx-trigger="load, person-list-updated from:body"></div>

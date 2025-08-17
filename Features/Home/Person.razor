@@ -19,9 +19,4 @@
 @code {
     [Parameter]
     public PersonRecord? Model { get; set; }
-
-    protected override void OnInitialized()
-    {
-        Model ??= new PersonRecord(0, string.Empty, string.Empty);
-    }
 }
