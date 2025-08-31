@@ -9,8 +9,8 @@ public static class Extensions
     public static IServiceCollection AddEndpoints(this IServiceCollection services, Assembly assembly)
     {
         ServiceDescriptor[] serviceDescriptors = assembly.DefinedTypes
-            .Where(type => type is { IsAbstract: false, IsInterface: false } && type.IsAssignableTo(typeof(IEndpoint)))
-            .Select(type => ServiceDescriptor.Transient(typeof(IEndpoint), type))
+            .Where(type => type is { IsAbstract: false, IsInterface: false } && type.IsAssignableTo(typeof(IHtmxEndpoint)))
+            .Select(type => ServiceDescriptor.Transient(typeof(IHtmxEndpoint), type))
             .ToArray();
 
         services.TryAddEnumerable(serviceDescriptors);
@@ -20,9 +20,9 @@ public static class Extensions
 
     public static IApplicationBuilder MapEndpoints(this WebApplication app, RouteGroupBuilder? routeGroupBuilder = null)
     {
-        IEnumerable<IEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IEndpoint>>();
+        IEnumerable<IHtmxEndpoint> endpoints = app.Services.GetRequiredService<IEnumerable<IHtmxEndpoint>>();
         IEndpointRouteBuilder builder = routeGroupBuilder is null ? app : routeGroupBuilder;
-        foreach (IEndpoint endpoint in endpoints)
+        foreach (IHtmxEndpoint endpoint in endpoints)
         {
             endpoint.MapEndpoint(builder);
         }

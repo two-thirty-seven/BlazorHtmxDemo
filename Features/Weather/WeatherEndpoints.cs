@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Weather;
 
-public class WeatherEndpoints : IEndpoint
+public class WeatherEndpoints : IHtmxEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {

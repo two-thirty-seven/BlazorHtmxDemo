@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Counter;
 
-public class CounterEndpoints : IEndpoint
+public class CounterEndpoints : IHtmxEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {

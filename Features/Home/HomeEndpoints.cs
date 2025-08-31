@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorHtmxDemo.Features.Home;
 
-public class HomeEndpoints : IEndpoint
+public class HomeEndpoints : IHtmxEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {

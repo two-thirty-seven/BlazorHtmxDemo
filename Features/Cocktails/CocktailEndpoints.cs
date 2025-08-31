@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Cocktails;
 
-public class CocktailEndpoints : IEndpoint
+public class CocktailEndpoints : IHtmxEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {

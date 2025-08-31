@@ -3,10 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorHtmxDemo.Features.Person;
 
-public class PersonEndpoints : IEndpoint
+public class PersonEndpoints : IHtmxEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
+        app.MapGet("/person", () => new RazorComponentResult<PersonForm>(new 
+        {
+            Model = new PersonRecord(0, "", "")
+        }));
+        
         app.MapGet("/person-list", (HttpContext context) =>
         {
             var peopleData = context.Session.GetObjectFromJson<List<PersonRecord>>();
@@ -15,12 +20,7 @@ public class PersonEndpoints : IEndpoint
                 People = peopleData
             });
         });
-        
-        app.MapGet("/person", () => new RazorComponentResult<PersonForm>(new 
-        {
-            Model = new PersonRecord(0, "", "")
-        }));
-        
+       
         app.MapPost("/person", ([FromForm] PersonRecord viewModel, HttpContext context)  =>
         {
             var peopleData = context.Session.GetObjectFromJson<List<PersonRecord>>();
