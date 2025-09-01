@@ -1,0 +1,26 @@
+dialog {
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  
+  &[open] {
+    display: flex;
+    opacity: 1;
+    pointer-events: inherit;
+    flex-direction: column;
+    border: none !important;
+    border-radius: 12px;
+    box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    padding: 1.6rem;
+  }
+  
+  &::backdrop {
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(3px);
+  }
+}
+
+#utility-modal {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
