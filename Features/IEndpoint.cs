@@ -1,6 +1,6 @@
 namespace BlazorHtmxDemo.Features;
 
-public interface IHtmxEndpoint
+public interface IEndpoint
 {
     void MapEndpoint(IEndpointRouteBuilder app);
 }

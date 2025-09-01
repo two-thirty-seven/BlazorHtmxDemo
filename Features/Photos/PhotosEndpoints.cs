@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BlazorHtmxDemo.Features.Photos;
 
-public class PhotosEndpoints : IHtmxEndpoint
+public class PhotosEndpoints : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {

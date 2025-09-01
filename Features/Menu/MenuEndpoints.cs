@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Menu;
 
-public class MenuEndpoints : IHtmxEndpoint
+public class MenuEndpoints : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     { 
