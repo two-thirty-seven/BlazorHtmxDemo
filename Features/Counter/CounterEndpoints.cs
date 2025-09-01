@@ -8,7 +8,7 @@ public class CounterEndpoints : IEndpoint
     {
         app.MapGet("/api/counter", () => new RazorComponentResult<CurrentCount>());
 
-        app.MapPatch("/api/counter/{increment}", (HttpContext context, int increment) =>
+        app.MapPatch("/api/counter/{increment:int}", (HttpContext context, int increment) =>
         {
             var state = context.Session.GetObjectFromJson<CounterState>();
             context.Session.SetObjectAsJson<CounterState>(state with { CurrentCount = state.CurrentCount + increment });

@@ -1,0 +1,13 @@
+<ul>
+    @foreach (var person in People)
+    {
+        <li>
+            @person.PersonId @person.FirstName @person.LastName
+            <a href="#" hx-delete="/person/@person.PersonId">Delete</a>
+        </li>
+    }   
+</ul>
+
+@code {
+    [Parameter] public required List<PersonRecord> People { get; set; }
+}

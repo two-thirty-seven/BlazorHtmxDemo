@@ -7,3 +7,4 @@ node_modules/*
 /BlazorHtmxDemo.csproj.user
 
 .idea/.idea.BlazorHtmxDemo/.idea/
+*.razor.css

@@ -8,7 +8,7 @@ public class CocktailEndpoints : IEndpoint
     {
         app.MapGet("/cocktails/search", (string search) => new RazorComponentResult<CocktailList>(new { Search = search }));
 
-        app.MapGet("/cocktails/detail/{id}", (int id, CocktailsService cocktailsService) => {
+        app.MapGet("/cocktails/detail/{id:int}", (int id, CocktailsService cocktailsService) => {
             var cocktail = cocktailsService.GetDrink(id);
             return new RazorComponentResult<CocktailDetail>(new { Cocktail = cocktail });
         });
