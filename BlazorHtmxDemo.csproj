@@ -14,5 +14,19 @@
         <PackageReference Include="Htmx.TagHelpers" Version="1.6.1" />
         <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
     </ItemGroup>
+    
+    <Target Name="EnsureNode" BeforeTargets="CompileSass" Condition="!Exists('node_modules')">
+        <Exec Command="node --version" ContinueOnError="true">
+            <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+        </Exec>
+        <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is requried to build this project."/>
+        <Message Importance="high" Text="Restoring dependencies using 'npm'"/>
+        <Exec Command="npm install"/>
+    </Target>
+    
+    <Target Name="CompileSass" BeforeTargets="Compile">
+        <Message Text="Compiling SCSS files" Importance="high"/>
+        <Exec Command="npm run sass-build"/>
+    </Target>
 
 </Project>
