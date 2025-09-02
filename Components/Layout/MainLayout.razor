@@ -11,6 +11,9 @@
     <main>
         <div class="top-row px-4">
             <MenuPopup/>
+            <a hx-get="/session" hx-target="#utilityModal_content" class="nav-link" onclick="window.utilityModal.showModal();">
+                Session
+            </a>
             <span hx-get="/api/counter" hx-trigger="counter-updated from:body">
                 <CurrentCount />
             </span>

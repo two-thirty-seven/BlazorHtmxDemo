@@ -1,0 +1,13 @@
+<h1>Session</h1>
+
+@foreach (var key in Session.Keys)
+{
+    <div>
+        <strong>@key</strong>
+        <pre>@Session.GetString(key)</pre>
+    </div>
+}
+
+@code {
+    [Parameter] public ISession Session { get; set; }
+}
