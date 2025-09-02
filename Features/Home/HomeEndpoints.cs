@@ -8,5 +8,10 @@ public class HomeEndpoints : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapGet("/api/love-htmx", () => new RazorComponentResult<LoveHtmx>());
+
+        app.MapGet("/session", (HttpContext context) => new RazorComponentResult<SessionValues>(new
+        {
+            context.Session
+        }));
     }
 }
