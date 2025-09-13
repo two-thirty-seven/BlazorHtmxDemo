@@ -42,7 +42,7 @@ jobs:
           registryPassword: ${{ secrets.BLAZORHTMXDEMO_REGISTRY_PASSWORD }}
           containerAppName: blazorhtmxdemo
           resourceGroup: rpkblazorhtmx
-          imageToBuild: robert.p.king@me.com/blazorhtmxdemo:${{ github.sha }}
+          imageToBuild: twothirtyseven/blazorhtmxdemo:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
 
