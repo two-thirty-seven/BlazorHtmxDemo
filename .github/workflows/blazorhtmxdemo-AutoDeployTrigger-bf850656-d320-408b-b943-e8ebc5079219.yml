@@ -1,0 +1,49 @@
+name: Trigger auto deployment for blazorhtmxdemo
+
+# When this action will be executed
+on:
+  # Automatically trigger it when detected changes in repo
+  push:
+    branches: 
+      [ master ]
+    paths:
+    - '**'
+    - '.github/workflows/blazorhtmxdemo-AutoDeployTrigger-bf850656-d320-408b-b943-e8ebc5079219.yml'
+
+  # Allow manual trigger 
+  workflow_dispatch:      
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    permissions: 
+      id-token: write #This is required for requesting the OIDC JWT Token
+      contents: read #Required when GH token is used to authenticate with private repo
+
+    steps:
+      - name: Checkout to the branch
+        uses: actions/checkout@v2
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.BLAZORHTMXDEMO_AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.BLAZORHTMXDEMO_AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.BLAZORHTMXDEMO_AZURE_SUBSCRIPTION_ID }}
+
+      - name: Build and push container image to registry
+        uses: azure/container-apps-deploy-action@v2
+        with:
+          appSourcePath: ${{ github.workspace }}
+          _dockerfilePathKey_: _dockerfilePath_
+          _targetLabelKey_: _targetLabel_
+          registryUrl: docker.io
+          registryUsername: ${{ secrets.BLAZORHTMXDEMO_REGISTRY_USERNAME }}
+          registryPassword: ${{ secrets.BLAZORHTMXDEMO_REGISTRY_PASSWORD }}
+          containerAppName: blazorhtmxdemo
+          resourceGroup: rpkblazorhtmx
+          imageToBuild: robert.p.king@me.com/blazorhtmxdemo:${{ github.sha }}
+          _buildArgumentsKey_: |
+            _buildArgumentsValues_
+
+
