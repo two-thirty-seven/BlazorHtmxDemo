@@ -1,0 +1,12 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<span id="current-count">
+    <CurrentCount />
+</span>
+
+<div hx-target="#current-count">
+    <button class="btn btn-primary" hx-patch="/api/counter/-1">Down</button>
+    <button class="btn btn-primary" hx-patch="/api/counter/1">Up</button> 
+</div>

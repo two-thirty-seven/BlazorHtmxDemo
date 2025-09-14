@@ -1,0 +1,14 @@
+.popup-menu {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+}
+
+.menu-link {
+    padding: 0 8px 8px 8px;
+    margin: 0 !important;
+}
+
+.menu-link:first-of-type {
+    padding-top: 8px;
+}

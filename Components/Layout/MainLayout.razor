@@ -1,0 +1,28 @@
+﻿@using BlazorHtmxDemo.Components.Shared
+@using BlazorHtmxDemo.Features.Counter
+@using BlazorHtmxDemo.Features.Menu
+@inherits LayoutComponentBase
+
+<div class="page" hx-boost="true">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <MenuPopup/>
+            <a hx-get="/session" hx-target="#utilityModal_content" class="nav-link" onclick="window.utilityModal.showModal();">
+                Session
+            </a>
+            <span hx-get="/api/counter" hx-trigger="counter-updated from:body">
+                <CurrentCount />
+            </span>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>
+
+<UtilityModal/>

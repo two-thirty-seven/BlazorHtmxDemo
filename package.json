@@ -1,0 +1,15 @@
+{
+  "name": "blazorhtmxdemo",
+  "version": "1.0.0",
+  "description": "This is a playground repo to demonstrate how to integrate HTMX with Blazor SSR components for a server-side,  yet interactive, application.",
+  "main": "index.js",
+  "scripts": {
+    "sass-watch": "sass --watch .",
+    "sass-build": "sass --style compressed --no-source-map ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sass": "^1.91.0"
+  }
+}

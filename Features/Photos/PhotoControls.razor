@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Components.Forms
+@inject IHttpContextAccessor ContextAccessor
+
+<form class="controls" hx-target="closest .control-panel">
+    <button class="btn btn-primary" aria-label="Prev" hx-patch="/photos/prev">Prev</button>
+    <button class="btn btn-primary" aria-label="Next" hx-patch="/photos/next">Next</button>
+</form>
+<form hx-post="/photos/search" hx-target="closest .control-panel" class="controls">
+    <input type="number" name="page" class="form-control" aria-label="Page" min="1" max="3000" value="@_state!.Page"/>
+    <input type="number" name="size" class="form-control" aria-label="Length" min="1" max="100" value="@_state.Size"/>
+    <button class="btn btn-primary" aria-label="Load" type="submit">Load</button>
+    <AntiforgeryToken/>
+</form>
+
+@code {
+    private PhotosState? _state;
+
+    protected override void OnInitialized()
+    {
+        _state = ContextAccessor.HttpContext?.Session.GetObjectFromJson<PhotosState>();
+    }
+}

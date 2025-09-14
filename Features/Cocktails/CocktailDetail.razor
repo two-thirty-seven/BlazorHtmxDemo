@@ -1,0 +1,32 @@
+<section id="cocktail-detail">
+    @if (Cocktail != null)
+    {
+        <div class="row">
+            <section class="cocktail-ingredients col-8">
+                <h3>@Cocktail.Name</h3>
+                <div>Glass: @Cocktail.Glass</div>
+                <div>
+                    Ingredients:
+                    <ul>
+                        @foreach (var ingredient in Cocktail.Ingredients)
+                        {
+                            <li>@ingredient.Measure @ingredient.Name</li>
+
+                        }
+
+                    </ul>
+                </div>
+                <div>Instructions</div>
+                <div>@Cocktail.Instructions</div>
+            </section>
+            <div class="cocktail-photo col-4">
+                <img src="@Cocktail.Thumbnail" alt="Photo of @Cocktail.Name" />
+            </div>
+        </div>
+    }    
+</section>
+
+@code {
+    [Parameter]
+    public Cocktail? Cocktail { get; set; }
+}

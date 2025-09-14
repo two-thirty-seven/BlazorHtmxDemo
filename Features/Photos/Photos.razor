@@ -1,0 +1,10 @@
+﻿@page "/photos"
+
+<h1>Photos</h1>
+
+<div class="container-fluid">
+    <div class="control-panel">
+        <PhotoControls/>
+    </div>
+    <div id="photo-sheet" hx-get="/photos/sheet" hx-trigger="load, photos-state-updated from:body"></div>
+</div>

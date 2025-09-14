@@ -1,0 +1,12 @@
+@inject IHttpContextAccessor ContextAccessor
+
+Current count: @_state!.CurrentCount
+
+@code {
+    private CounterState? _state;
+
+    protected override void OnInitialized()
+    {
+        _state = ContextAccessor.HttpContext?.Session.GetObjectFromJson<CounterState>();
+    }
+}

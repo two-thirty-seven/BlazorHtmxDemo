@@ -1,0 +1,11 @@
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+#photo-sheet {
+  margin-top: 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
