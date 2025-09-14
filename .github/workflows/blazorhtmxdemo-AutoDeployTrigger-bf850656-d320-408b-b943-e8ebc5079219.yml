@@ -5,7 +5,7 @@ on:
   # Automatically trigger it when detected changes in repo
   push:
     branches: 
-      [ main ]
+      [ master ]
     paths:
     - '**'
     - '.github/workflows/blazorhtmxdemo-AutoDeployTrigger-bf850656-d320-408b-b943-e8ebc5079219.yml'
@@ -45,5 +45,6 @@ jobs:
           imageToBuild: twothirtyseven/blazorhtmxdemo:${{ github.sha }}
           _buildArgumentsKey_: |
             _buildArgumentsValues_
+
 
 
