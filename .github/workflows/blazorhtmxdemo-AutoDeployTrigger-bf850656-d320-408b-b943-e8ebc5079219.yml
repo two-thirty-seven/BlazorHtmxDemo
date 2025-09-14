@@ -5,7 +5,7 @@ on:
   # Automatically trigger it when detected changes in repo
   push:
     branches: 
-      [ master ]
+      [ main ]
     paths:
     - '**'
     - '.github/workflows/blazorhtmxdemo-AutoDeployTrigger-bf850656-d320-408b-b943-e8ebc5079219.yml'
