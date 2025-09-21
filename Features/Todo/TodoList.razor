@@ -1,0 +1,23 @@
+<section hx-target="this" hx-swap="outerHTML">
+    <h3>TodoList</h3>
+    <form hx-post="/todolist">
+        @for (int i = 0; i < Tasks.Count; i++)
+        {
+            <div>
+                <input type="text" name="Tasks[@i].TaskName" value="@Tasks[i].TaskName" required/>
+                <input type="checkbox" name="Tasks[@i].IsComplete" value="true" checked="@Tasks[i].IsComplete"/>
+                <a href="#" hx-patch="/todolist/delete/@i">X</a>
+            </div>
+        }
+        <button type="button" class="btn btn-secondary" hx-patch="/todolist/add">Add</button>
+        @if (Tasks.Count > 0)
+        {
+            <button type="submit" class="btn btn-primary">Save</button>            
+        }
+    </form>
+</section>
+
+@code {
+    [Parameter]
+    public List<TodoTask> Tasks { get; set; } = [];
+}
