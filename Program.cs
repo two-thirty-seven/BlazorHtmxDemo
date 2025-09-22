@@ -38,6 +38,7 @@ app.MapStaticAssets();
 app.UseAntiforgery();
 app.UseSession();
 app.MapRazorComponents<App>();
+app.MapControllers();
 app.MapEndpoints();
 
 app.Run();
