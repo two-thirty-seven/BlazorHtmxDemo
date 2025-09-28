@@ -8,7 +8,7 @@ public class TodoController(IHttpContextAccessor contextAccessor) : ControllerBa
     [HttpGet("/todolist")]
     public IResult Index()
     {
-        var tasks = contextAccessor.HttpContext?.Session.GetObjectFromJson<List<TodoTask>>() ?? [];
+        var tasks = contextAccessor.HttpContext?.Session.GetObjectFromJson<List<TodoTask>>("Tasks") ?? [];
         return new RazorComponentResult<TodoList>(new
         {
             Tasks = tasks
@@ -40,7 +40,7 @@ public class TodoController(IHttpContextAccessor contextAccessor) : ControllerBa
     [HttpPost("/todolist")]
     public IResult Save([FromForm] List<TodoTask>? tasks)
     {
-        contextAccessor.HttpContext?.Session.SetObjectAsJson<List<TodoTask>>(tasks!);
+        contextAccessor.HttpContext?.Session.SetObjectAsJson<List<TodoTask>>("Tasks", tasks!);
         return new RazorComponentResult<TodoList>(new
         {
             tasks

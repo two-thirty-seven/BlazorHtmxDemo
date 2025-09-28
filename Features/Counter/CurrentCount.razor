@@ -7,6 +7,6 @@ Current count: @_state!.CurrentCount
 
     protected override void OnInitialized()
     {
-        _state = ContextAccessor.HttpContext?.Session.GetObjectFromJson<CounterState>();
+        _state = ContextAccessor.HttpContext?.Session.GetObjectFromJson<CounterState>("Counter");
     }
 }
