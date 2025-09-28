@@ -1,5 +1,5 @@
-using BlazorHtmxDemo;
 using BlazorHtmxDemo.Components;
+using BlazorHtmxDemo.Extensions;
 using BlazorHtmxDemo.Features.Cocktails;
 using BlazorHtmxDemo.Features.Photos;
 

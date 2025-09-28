@@ -1,6 +1,8 @@
 using System.Text.Json;
 
-public static class SessionExtensions
+namespace BlazorHtmxDemo.Extensions;
+
+public static class ISessionExtensions
 {
     public static void SetObjectAsJson<T>(this ISession session, string key, object value)
     {

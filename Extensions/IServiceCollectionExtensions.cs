@@ -2,9 +2,9 @@ using System.Reflection;
 using BlazorHtmxDemo.Features;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
-namespace BlazorHtmxDemo;
+namespace BlazorHtmxDemo.Extensions;
 
-public static class Extensions
+public static class IServiceCollectionExtensions
 {
     public static IServiceCollection AddEndpoints(this IServiceCollection services, Assembly assembly)
     {
