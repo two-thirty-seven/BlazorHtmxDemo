@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@inject IWebHostEnvironment Environment
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -14,8 +16,14 @@
 
 <body>
     <Routes />
-    <script src="@Assets["js/htmx.min.js"]"></script>
+    <script src="@Assets[HtmxScriptUrl]"></script>
     <script src="@Assets["components/shared/utilityModal.razor.js"]"></script>
 </body>
 
 </html>
+
+@code {
+    private string HtmxScriptUrl => Environment.IsDevelopment() 
+        ? Assets["js/htmx.js"] 
+        : Assets["js/htmx.min.js"];
+}
