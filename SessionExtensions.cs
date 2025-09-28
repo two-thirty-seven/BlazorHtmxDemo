@@ -2,15 +2,15 @@ using System.Text.Json;
 
 public static class SessionExtensions
 {
-    public static void SetObjectAsJson<T>(this ISession session, object value)
+    public static void SetObjectAsJson<T>(this ISession session, string key, object value)
     {
         // Use the friendly type name as the key
-        session.SetString(typeof(T).GetFriendlyName(), JsonSerializer.Serialize(value));
+        session.SetString(key, JsonSerializer.Serialize(value));
     }
 
-    public static T GetObjectFromJson<T>(this ISession session)
+    public static T GetObjectFromJson<T>(this ISession session, string key)
     {
-        var value = session.GetString(typeof(T).GetFriendlyName());
+        var value = session.GetString(key);
         return (value == null ? Activator.CreateInstance<T>() : JsonSerializer.Deserialize<T>(value))!;
     }
 }
