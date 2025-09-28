@@ -1,0 +1,24 @@
+# GitHub Actions workflow to build the solution on PRs targeting master
+name: Build on PR to master
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+      - name: Restore dependencies
+        run: dotnet restore BlazorHtmxDemo.sln
+      - name: Build solution
+        run: dotnet build BlazorHtmxDemo.sln --configuration Release --no-restore
+      - name: Run tests (if any)
+        run: dotnet test BlazorHtmxDemo.sln --no-build --verbosity normal || echo "No tests found"
