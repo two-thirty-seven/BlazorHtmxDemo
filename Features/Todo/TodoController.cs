@@ -1,3 +1,4 @@
+using BlazorHtmxDemo.Extensions;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,7 @@ namespace BlazorHtmxDemo.Features.Todo;
 public class TodoController(IHttpContextAccessor contextAccessor) : ControllerBase
 {
     [HttpGet("/todolist")]
+    [HXRequestOnly]
     public IResult Index()
     {
         var tasks = contextAccessor.HttpContext?.Session.GetObjectFromJson<List<TodoTask>>("Tasks") ?? [];
@@ -16,6 +18,7 @@ public class TodoController(IHttpContextAccessor contextAccessor) : ControllerBa
     }
 
     [HttpPatch("/todolist/add")]
+    [HXRequestOnly]
     public IResult Add([FromForm] List<TodoTask>? tasks)
     {
         tasks?.Add(new TodoTask(tasks.Count, "", false));
@@ -27,6 +30,7 @@ public class TodoController(IHttpContextAccessor contextAccessor) : ControllerBa
     }
     
     [HttpPatch("/todolist/delete/{index:int}")]
+    [HXRequestOnly]
     public IResult Add(int index, [FromForm] List<TodoTask>? tasks)
     {
         tasks?.RemoveAt(index);
@@ -38,6 +42,7 @@ public class TodoController(IHttpContextAccessor contextAccessor) : ControllerBa
     }
 
     [HttpPost("/todolist")]
+    [HXRequestOnly]
     public IResult Save([FromForm] List<TodoTask>? tasks)
     {
         contextAccessor.HttpContext?.Session.SetObjectAsJson<List<TodoTask>>("Tasks", tasks!);

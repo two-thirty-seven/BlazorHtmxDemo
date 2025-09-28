@@ -1,3 +1,5 @@
+using BlazorHtmxDemo;
+using BlazorHtmxDemo.Extensions;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Counter;
@@ -6,7 +8,7 @@ public class CounterEndpoints : IEndpoint
 {
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
-        app.MapGet("/api/counter", () => new RazorComponentResult<CurrentCount>());
+    app.MapGet("/api/counter", () => new RazorComponentResult<CurrentCount>()).RequireHXRequest();
 
         app.MapPatch("/api/counter/{increment:int}", (HttpContext context, int increment) =>
         {
@@ -15,6 +17,6 @@ public class CounterEndpoints : IEndpoint
             context.Response.Headers.Append("HX-Trigger", "counter-updated");
             
             return new RazorComponentResult<CurrentCount>();
-        });
+        }).RequireHXRequest();
     }
 }

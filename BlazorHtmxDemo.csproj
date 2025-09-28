@@ -19,14 +19,14 @@
         <Exec Command="node --version" ContinueOnError="true">
             <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
         </Exec>
-        <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is requried to build this project."/>
-        <Message Importance="high" Text="Restoring dependencies using 'npm'"/>
-        <Exec Command="npm install"/>
+        <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is requried to build this project." />
+        <Message Importance="high" Text="Restoring dependencies using 'npm'" />
+        <Exec Command="npm install" />
     </Target>
     
     <Target Name="CompileSass" BeforeTargets="Compile">
-        <Message Text="Compiling SCSS files" Importance="high"/>
-        <Exec Command="npm run sass-build"/>
+        <Message Text="Compiling SCSS files" Importance="high" />
+        <Exec Command="npm run sass-build" />
     </Target>
 
 </Project>

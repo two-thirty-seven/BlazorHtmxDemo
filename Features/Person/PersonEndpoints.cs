@@ -1,3 +1,4 @@
+using BlazorHtmxDemo.Extensions;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,7 +11,7 @@ public class PersonEndpoints : IEndpoint
         app.MapGet("/person", () => new RazorComponentResult<PersonForm>(new 
         {
             Model = new PersonRecord(0, "", "")
-        }));
+        })).RequireHXRequest();
         
         app.MapGet("/person-list", (HttpContext context) =>
         {
@@ -19,7 +20,7 @@ public class PersonEndpoints : IEndpoint
             {
                 People = peopleData
             });
-        });
+        }).RequireHXRequest();
        
         app.MapPost("/person", ([FromForm] PersonRecord viewModel, HttpContext context)  =>
         {
@@ -32,7 +33,7 @@ public class PersonEndpoints : IEndpoint
             {
                 Model = new PersonRecord(0, "", "")
             });
-        });
+        }).RequireHXRequest();
 
         app.MapDelete("/person/{Id:int}", (int id, HttpContext context) =>
         {
@@ -45,7 +46,7 @@ public class PersonEndpoints : IEndpoint
             {
                 Model = new PersonRecord(0, "", "")
             });
-        });
+        }).RequireHXRequest();
     }
 }
 

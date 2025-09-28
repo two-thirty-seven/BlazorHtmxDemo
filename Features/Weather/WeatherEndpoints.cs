@@ -1,3 +1,4 @@
+using BlazorHtmxDemo.Extensions;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace BlazorHtmxDemo.Features.Weather;
@@ -16,6 +17,6 @@ public class WeatherEndpoints : IEndpoint
                 Summary = summaries[Random.Shared.Next(summaries.Length)]
             }).ToArray();
             return new RazorComponentResult<WeatherTable>(new { Forecasts = forecasts });
-        });
+        }).RequireHXRequest();
     }
 }
